@@ -19,21 +19,21 @@ export async function createUser(data: authRepository.TypeNewUser) {
   });
 }
 
-// export async function login(email: string, password: string) {
-//   const user = await authRepository.getUserByEmail(email);
+export async function login(email: string, password: string) {
+  const user = await authRepository.getUserByEmail(email);
 
-//   if (!user) throw { code: "Not Found", message: "Email não cadastrado." };
+  if (!user) throw { code: "Not Found", message: "Email não cadastrado." };
 
-//   if (user && bcrypt.compareSync(password, user.password)) {
-//     const token = jwt.sign(
-//       {
-//         id: user.id,
-//       },
-//       "" + process.env.SECRET_KEY_TOKEN,
-//       { expiresIn: "10 days" }
-//     );
-//     return token;
-//   } else {
-//     throw { code: "Unauthorized", message: "Acesso negado" };
-//   }
-// }
+  if (user && bcrypt.compareSync(password, user.password)) {
+    const token = jwt.sign(
+      {
+        id: user.id,
+      },
+      "" + process.env.SECRET_KEY_TOKEN,
+      { expiresIn: "10 days" }
+    );
+    return token;
+  } else {
+    throw { code: "Unauthorized", message: "Acesso negado" };
+  }
+}

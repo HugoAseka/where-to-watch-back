@@ -14,10 +14,10 @@ export async function signUp(req: Request, res: Response) {
   res.sendStatus(201);
 }
 
-// export async function signIn(req: Request, res: Response) {
-//   const { email, password } = req.body;
+export async function signIn(req: Request, res: Response) {
+  const { email, password } = req.body;
 
-//   const token = await authService.login(email, password);
+  const token = await authService.login(email, password);
 
-//   res.status(200).send(token);
-// }
+  res.status(200).send(token);
+}
