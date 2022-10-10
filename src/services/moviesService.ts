@@ -9,10 +9,14 @@ export async function reqMovieById(id: string) {
 }
 
 export async function reqMoviesInTheater() {
-//   return await axios.get(
-//     baseUrl + "now_playing?api_key=" + api_key + "&language=en-US&page=1"
-//   );
   return await axios.get(
-    "https://api.themoviedb.org/3/movie/now_playing?api_key=d14c3c3285ff3f1e05204d31ea4b510b&language=en-US&page=1"
+    baseUrl + "now_playing?api_key=" + api_key + "&language=en-US&page=1"
   );
+  //   return await axios.get(
+  //     "https://api.themoviedb.org/3/movie/now_playing?api_key=d14c3c3285ff3f1e05204d31ea4b510b&language=en-US&page=1"
+  //   );
+}
+
+export async function reqMovieProviders(id: string) {
+  return await axios.get(baseUrl + id + "/watch/providers?api_key=" + api_key);
 }
